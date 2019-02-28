@@ -21,9 +21,9 @@
 
 J'introduis quelques notations. En analyse convexe on dénote l'ensemble
 des fonctions convexes \emph{propres} sur un espace euclidien $\mathbb E$
-(dans notre cas simplement $\mathbb R$) par $\Gamma (\mathbb E)$.
+(dans notre cas simplement $\mathbb R^n$) par $\Gamma (\mathbb E)$.
 \begin{equation*}
-    \Gamma \triangleq \{f : \mathbb R \rightarrow \mathbb R \cup \{+\infty\}\}
+    \Gamma \triangleq \{f : \mathbb R^n \rightarrow \mathbb R \cup \{+\infty\}\}
 \end{equation*}
 Une fonction \emph{propre} est une fonction pour laquelle il existe au moins un
 $x$ t.q. $f(x) < + \infty $ et pour laquelle pour tout $x$ $f(x) > -\infty$. 
@@ -32,7 +32,8 @@ On écarte ainsi certains cas pathologiques.
 J'utilise la notation de Evans pour la d\'erivation. Ainsi $D_x f$ 
 est la d\'eriv\'ee de f par rapport \`a x, si c'est un nombre, un vecteur
 (comme pour le gradient) ou une matrice (jacobien) d\'epend du contexte
-(de $f$ et de $x$). 
+(de $f$ et de $x$) dans tous les cas $D$ est toujours une approximation
+linéaire de f. 
 
 Soit A une matrice. Si A est d\'efinie positive  (resp.\  semi-d\'efinies
 positives) on \'ecrit $A \succ 0$ (resp $A \succeq 0$).
