@@ -45,7 +45,7 @@
 
 
 %%%indenting
-%\setlength{\tindent}{\parindent}
-%\setlength{\parindent}{0pt}
-%\renewcommand{\indent}{\hspace*{\tindent}}
-
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}

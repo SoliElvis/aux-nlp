@@ -2,7 +2,6 @@
 \input{premath.tex}
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage{titling}
-\usepackage[backend=biber,citestyle=authoryear,style=ieee]{biblatex}
 \usepackage{amsmath}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -56,7 +55,6 @@ convexit\'e donn\'ee en cours:
 \end{align*}
 
 \clearpage
-
 \section{Syst\`eme lin\'eaire et optimisation}
 Prouvez que tout système linéaire $Ax = b$, avec A définie positive, peut se
 reformuler comme un problème d’optimisation sans contrainte. 
@@ -94,6 +92,69 @@ variables, $f : \mathbb R^n \rightarrow \mathbb R$, nous avons que $D^2_x(f) =
 \nabla^2_x (f) \succ 0$ implique $f$ strictement convexe. Nous voyons donc
 que la notation est appropri\'ee puisque l'on g\'en\'eralise la notion de
 `plus grand que z\'ero.'
+
+\clearpage
+
+\subsection{Norme euclidienne}
+Une autre fonction objectif qui a été choisi par certains étudiants 
+est la suivante:
+\begin{equation}
+    f(x) = \frac{1}{2} \norm{Ax - b}^2_2 \label{norm}
+\end{equation}
+Cette fonction est aussi convexe et d'ailleurs $C^2$. De plus la convexit\'e ne
+d\'epend \emph{pas} du fait que la matrice $A$ en tant que telle soit pos-def
+(definie positive). La preuve est cependant moins directe.\\
+
+Soit $h(x) = \frac{1}{2}\norm x^2_2$ et $g(x) = Ax -b$
+et donc $f(x) = h(g(x))$.\\
+
+D'abord nous calculons le gradient de la norme euclidienne au carr\'e.
+\begin{equation}
+    D_{x_i}h(g(x)) =  D_{x_i} \frac{1}{2}\norm {g(x)}_2^2
+    = D_{x_i}\, \frac{1}{2} \langle g(x),g(x)\rangle
+    = D_{x_i}\, \frac{1}{2} \sum g{(x_i)}^2
+    =  g'(x_i)g(x_i)
+\end{equation}
+Nous avons donc $ D \frac{1}{2} \norm x_2^2 = x\tran$ ($g$ est la fonction
+qui ne fait rien, la fonction identit\'e.) La transpose vient du
+fait que $Dh$ est une application lin\'eaire sur $\mathbb R^n$ qui approxime la
+fonction $h$. Ainsi une notation plus claire serait $D h(x) = \langle x,
+\cdot\rangle = x\tran$\\
+
+
+Maintenant nous pouvons appliquer la d\'erivation en chaine pour
+trouver la d\'eriv\'ee de la fonction\eqref{norm}.
+\begin{equation}
+    f'(x) = h'(g(x))g'(x) = g'(x)\tran g(x) = A\tran (Ax-b)
+\end{equation}
+
+Finalement nous avons donc 
+\begin{equation}
+    D^2 f = A\tran A
+\end{equation}
+Or c'est un fait connu en alg\`ebre lin\'eaire que 
+pour toute matrice $X$ invertible $X\tran X \succ 0$. Nous pouvons le
+d\'emontrer rapidement:
+\begin{equation}
+    x\tran AA\tran x = (A\tran x)\tran (A\tran x) = \norm {Ax}_2^2 
+\end{equation}
+Si $A$ est invertible alors clairement $\norm {Ax}^2_2 > 0$ pour tout
+$x\neq 0$. Au final nous avons donc que $D^2 f(x) \succ 0$ est la fonction
+objectif est donc strictement convexe avec comme minimum global la solution
+du syst\`eme lin\'eaire.\\
+
+\textbf{Notes}:\\
+Cette petite preuve montre l'approche la plus directe pour trouver le gradient
+d'une fonction, c'est \`a dire trouver les d\'eriv\'ees partielles pour un
+indice arbitraire et utiliser les regles de d\'erivation en chaine.\\
+De plus; $x\tran$ est fondamentalement un autre objet que $x$\footnote{pour
+ceux que ca interesse le premier est un element de l'espace des applications
+lineaires sur $\mathbb R^n$, espace que l'on appelle le duel}
+
+$x\tran$ est une \emph{fonction} qui prend un vecteur et retourne un nombre,
+$x$ est un vecteur.
+
+
 
 
 \end{document}
