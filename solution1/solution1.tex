@@ -1,0 +1,98 @@
+
+\input{premath.tex}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{titling}
+\usepackage[backend=biber,citestyle=authoryear,style=ieee]{biblatex}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\title{Solutionnaire 1}
+\author{Frederic Boileau}
+\date{\today}
+
+
+
+\begin{document}
+\fancyhf{}
+\fancyhead[L]{Dynamic programing}
+\maketitle
+\thispagestyle{fancy}
+
+J'introduis quelques notations. En analyse convexe on dénote l'ensemble
+des fonctions convexes \emph{propres} sur un espace euclidien $\mathbb E$
+(dans notre cas simplement $\mathbb R$) par $\Gamma (\mathbb E)$.
+\begin{equation*}
+    \Gamma \triangleq \{f : \mathbb R \rightarrow \mathbb R \cup \{+\infty\}\}
+\end{equation*}
+Une fonction \emph{propre} est une fonction pour laquelle il existe au moins un
+$x$ t.q. $f(x) < + \infty $ et pour laquelle pour tout $x$ $f(x) > -\infty$. 
+On écarte ainsi certains cas pathologiques.
+
+J'utilise la notation de Evans pour la d\'erivation. Ainsi $D_x f$ 
+est la d\'eriv\'ee de f par rapport \`a x, si c'est un nombre, un vecteur
+(comme pour le gradient) ou une matrice (jacobien) d\'epend du contexte
+(de $f$ et de $x$). 
+
+Soit A une matrice. Si A est d\'efinie positive  (resp.\  semi-d\'efinies
+positives) on \'ecrit $A \succ 0$ (resp $A \succeq 0$).
+
+\section{Direction de Descente}
+
+Soit $f$ une fonction convexe différentiable sur $\mathbb R^n$ 
+et $x$ et $y$ deux points de $\mathbb R^n$ t.q. $f(y) < f(x)$.
+Montrer que $y-x$ est une direction de descente de $f$ en $x$.
+Notons qu'aucun ordre n'est impos\'e  sur $x$ et $y$.\\
+
+La preuve d\'ecoule directement de la d\'efinition de la 
+convexit\'e donn\'ee en cours:
+\begin{align*}
+    f(\alpha y + (1-\alpha)x) &\leq \alpha f(y) + (1-\alpha)f(x)\\
+    f(x + \alpha(y-x)) &\leq \alpha f(y) + (1-\alpha)f(x)\\
+    f(x + \alpha(y-x)) &< \alpha f(y) + (1-\alpha)f(x)\\
+    f(x + \alpha(y-x)) &< f(x)
+\end{align*}
+
+\clearpage
+
+\section{Syst\`eme lin\'eaire et optimisation}
+Prouvez que tout système linéaire $Ax = b$, avec A définie positive, peut se
+reformuler comme un problème d’optimisation sans contrainte. 
+
+Pour la reformulation nous avons plusieurs crit\`eres; premi\`erement on veut
+que le minimum global corresponde \`a la solution, dans un second temps
+si le probl\`eme est convexe nous avons des garanties quant \`a la recherche
+de ce minimiseur global. Il y a deux formulations simples, je traite les
+deux.
+\subsection{Forme Quadratique}
+Le reformulation la plus simple est de prendre la forme quadratique suivante:\\
+\begin{equation}
+    f(x) = \frac{1}{2}x\tran A x - x\tran b
+\end{equation}
+
+Le calcul de d\'eriv\'es par rapport \`a des vecteurs ou des matrices
+peut \^etre laborieux mais l'identit\'e suivante est tr\`es importante:
+\begin{equation}
+    D_x (x\tran A x) = x\tran (A + A\tran)
+\end{equation}
+Ainsi nous avons:
+\begin{equation}
+    D_x(f) = Ax - b \qquad D_x^2(f) = A \succ 0
+\end{equation}
+La premi\`ere \'equation montre que le gradient de la fonction est nul ssi le
+$x$ est une solution du syst\`eme lin\'eaire. La deuxi\`eme \'equation montre
+que la deuxi\`eme d\'eriv\'ee (le hessien) de $f$ par rapport est
+\emph{d\'efinie positive} (par supposition sur A). La fonction est donc
+strictement convexe et atteint son minimum ssi le gradient est nulle, ce qui
+n'arrive que lorsque $Ax = b$. \\
+
+Notons que pour une fonction \`a une variable $D^2_x(f) > 0$ implique
+que $f$ est strictement convexe en $x$. Pour une fonction \`a plusieures
+variables, $f : \mathbb R^n \rightarrow \mathbb R$, nous avons que $D^2_x(f) =
+\nabla^2_x (f) \succ 0$ implique $f$ strictement convexe. Nous voyons donc
+que la notation est appropri\'ee puisque l'on g\'en\'eralise la notion de
+`plus grand que z\'ero.'
+
+
+\end{document}
+
